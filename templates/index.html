@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片识别系统</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+<div class="nav1">
+    <h1>图片识别</h1>
+    <p>支持识别图片的类型有普通通用识别，菜肴识别，车型识别和植物识别</p>
+</div>
+<div class="content">
+    <form method="post" enctype="multipart/form-data">
+        {{form.hidden_tag()}}
+        {% for msg in get_flashed_messages(category_filter='check') %}
+        <p>{{msg}}</p>
+        {% endfor %}
+        {{form.pic_file}}
+        {{form.pic_submit}}
+        <div class="radioes">
+            {{form.pic_type}}
+        </div>
+
+    </form>
+
+    <div class="result">
+        <span>识别结果</span>
+        <span class="orc">{{orc}}</span>
+    </div>
+</div>
+<div class="footer">
+    <h2>西窗浪人-版权所有</h2>
+</div>
+</body>
+</html>
